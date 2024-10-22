@@ -110,6 +110,15 @@ sqlmap -r request.txt --time-sec=10 --tor --tor-type=SOCKS5 --check-tor
 naabu -l targets.txt -rate 3000 -retries 3 -warm-up-time 0 -rate 150 -c 50 -ports 1-65535 -silent -o out.txt
 ```
 
+```bash
+# Private template 
+subfinder -d xyz.com -all  | nuclei -t crlf.yaml -rl 50
+subfinder -d xyz.com -all  | nuclei -t openRedirect.yaml -rl 100
+subfinder -d xyz.com -all  | nuclei -t iis.yaml
+subfinder -d xyz.com -all  | nuclei -t cors.yaml -rl 100
+subfinder -d xyz.com -all  | waybackurls | gf sqli | uro | nuclei -t errorsqli.yaml -rl 50
+```
+
 ## License
 
 This repository is licensed under the MIT License.
